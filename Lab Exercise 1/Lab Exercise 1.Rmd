@@ -1,0 +1,99 @@
+---
+title: "Lab Exercise 1"
+output: html_document
+date: "2024-02-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(rvest)
+library(dplyr)
+library(polite)
+
+url <- "https://www.amazon.co.uk/s?k=headphones&ref=nb_sb_noss"
+
+session <- bow(url,user_agent = "For Educational Purposes")
+
+amazon <- read_html(url)
+```
+
+
+```{r}
+headphones <- scrape(session) %>%
+  html_nodes("span.a-text-normal") %>%
+  html_text
+headphones
+headphones22 <- headphones[1:22]
+headphones22
+```
+
+```{r}
+headphones_prices <- scrape(session) %>%
+  html_nodes("span.a-price-whole") %>%
+  html_text
+headphones_prices
+```
+
+```{r}
+
+headphones_Ratings <- scrape(session) %>%
+  html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
+  html_text
+headphones_Ratings
+```
+
+```{r}
+
+
+headphones_noReviews <- scrape(session) %>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+headphones_noReviews
+```
+
+```{r}
+
+url <- "https://www.amazon.co.uk/s?k=slides&page=2&crid=38UVNRLWHLBX&qid=1707354108&sprefix=slid%2Caps%2C500&ref=sr_pg_1"
+
+session <- bow(url,user_agent = "For Educational Purposes")
+
+amazon <- read_html(url)
+
+ ```{r}
+
+headphones2 <- scrape(session) %>%
+  html_nodes("span.a-text-normal") %>%
+  html_text
+headphones2
+headphones44 <- slides[1:44]
+headphones44
+```
+
+```{r}
+headphones_prices2 <- scrape(session) %>%
+  html_nodes("span.a-price-whole") %>%
+  html_text
+headphones_prices2
+```
+
+```{r}
+
+headphones_Ratings2 <- scrape(session) %>%
+  html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
+  html_text
+headphones_Ratings2
+```
+
+```{r}
+
+headphones_noReviews2 <- scrape(session) %>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+headphones_noReviews2
+```
+
+
