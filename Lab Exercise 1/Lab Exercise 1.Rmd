@@ -9,91 +9,684 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
+CATEGORY- PET SUPPLIES
+FIRST PRODUCT- Cat Brushes
 ```{r}
+
 library(rvest)
 library(dplyr)
 library(polite)
-
-url <- "https://www.amazon.co.uk/s?k=headphones&ref=nb_sb_noss"
-
-session <- bow(url,user_agent = "For Educational Purposes")
-
-amazon <- read_html(url)
-```
+library(httr)
 
 
-```{r}
-headphones <- scrape(session) %>%
-  html_nodes("span.a-text-normal") %>%
-  html_text
-headphones
-headphones22 <- headphones[1:22]
-headphones22
-```
+Pet_Supplies <- data.frame()
 
-```{r}
-headphones_prices <- scrape(session) %>%
-  html_nodes("span.a-price-whole") %>%
-  html_text
-headphones_prices
-```
-
-```{r}
-
-headphones_Ratings <- scrape(session) %>%
-  html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
-  html_text
-headphones_Ratings
-```
-
-```{r}
-
-
-headphones_noReviews <- scrape(session) %>%
-  html_nodes("span.a-size-base.s-underline-text") %>%
-  html_text
-headphones_noReviews
-```
-
-```{r}
-
-url <- "https://www.amazon.co.uk/s?k=slides&page=2&crid=38UVNRLWHLBX&qid=1707354108&sprefix=slid%2Caps%2C500&ref=sr_pg_1"
+url <- "https://www.amazon.com/s?k=pet+supplies&i=pets&rh=n%3A2619533011%2Cn%3A2975241011%2Cn%3A2975268011%2Cn%3A2975270011&dc&ds=v1%3AsJXC4SCd7jP8MVspD5KfXrXsSdgtsvsFez2%2F6g6DVvU&crid=3SO76ZS0IXIVB&qid=1708561449&rnid=2619533011&sprefix=Pet+supplioes%2Caps%2C319&ref=sr_nr_n_1"
 
 session <- bow(url,user_agent = "For Educational Purposes")
 
-amazon <- read_html(url)
+session
 
- ```{r}
+Category <- "PetSupplies"
 
-headphones2 <- scrape(session) %>%
+catbrush <- scrape(session) %>%
   html_nodes("span.a-text-normal") %>%
   html_text
-headphones2
-headphones44 <- slides[1:44]
-headphones44
-```
+catbrush24 <- catbrush24[1:24]
+catbrush24
 
-```{r}
-headphones_prices2 <- scrape(session) %>%
+
+catbrush_prices <- scrape(session) %>%
   html_nodes("span.a-price-whole") %>%
   html_text
-headphones_prices2
-```
+catbrush_prices24 <-catbrush_prices[1:24]
+catbrush_prices24
 
-```{r}
 
-headphones_Ratings2 <- scrape(session) %>%
+catbrush_Ratings <- scrape(session) %>%
   html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
   html_text
-headphones_Ratings2
+catbrush_Ratings24<-catbrush_Ratings[1:24]
+catbrush_Ratings24
+
+
+catbrush_noReviews <- scrape(session) %>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+catbrush_noReviews24<-catbrush_noReviews[1:24]
+catbrush_noReviews24
+
+Pet_Supplies <-data.frame(category = Category,
+                               name = catbrush24,
+                               price = catbrush_prices,
+                               ratings = catbrush_Ratings24,
+                               no_of_reviews = catbrush_noReviews24)
+
+
+Pet_Supplies
+
+url2 <- "https://www.amazon.com/s?k=pet+supplies&i=pets&rh=n%3A2619533011%2Cn%3A2975241011%2Cn%3A2975268011%2Cn%3A2975270011&dc&page=2&crid=3SO76ZS0IXIVB&qid=1708561455&rnid=2619533011&sprefix=Pet+supplioes%2Caps%2C319&ref=sr_pg_2"
+  
+session2 <- bow(url2,user_agent = "For Educational Purposes")
+
+session
+
+Category <- "PetSupplies"
+  
+  page2_catbrush <- scrape(session) %>%
+  html_nodes("span.a-text-normal") %>%
+  html_text
+page2_catbrush24 <- page2_catbrush[1:24]
+page2_catbrush24
+
+
+page2_catbrush_prices <- scrape(session) %>%
+  html_nodes("span.a-price-whole") %>%
+  html_text
+page2_catbrush_prices24 <-page2_catbrush_prices[1:24]
+page2_catbrush_prices24
+
+
+page2_catbrush_Ratings <- scrape(session) %>%
+  html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
+  html_text
+page2_catbrush_Ratings24<-page2_catbrush_Ratings[1:24]
+page2_catbrush_Ratings24
+
+
+page2_catbrush_noReviews <- scrape(session) %>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+page2_catbrush_noReviews24<-page2_catbrush_noReviews[1:24]
+page2_catbrush_noReviews24
+
+Pet_Supplies <-data.frame(category = Category,
+                               name = page2_catbrush24,
+                               price = page2_catbrush_prices,
+                               ratings = page2_catbrush_Ratings24,
+                               no_of_reviews = page2_catbrush_noReviews24)
+
+url3 <-"https://www.amazon.com/s?k=pet+supplies&i=pets&rh=n%3A2619533011%2Cn%3A2975241011%2Cn%3A2975268011%2Cn%3A2975270011&dc&page=3&crid=3SO76ZS0IXIVB&qid=1708562184&rnid=2619533011&sprefix=Pet+supplioes%2Caps%2C319&ref=sr_pg_3"
+
+session3 <- bow(url3,user_agent = "For Educational Purposes")
+
+amazon <- read_html(url)
+
+Category <- "PetSupplies"
+  
+  page3_catbrush <- scrape(session) %>%
+  html_nodes("span.a-text-normal") %>%
+  html_text
+page3_catbrush24 <- page3_catbrush[1:24]
+page3_catbrush24
+
+
+page3_catbrush_prices <- scrape(session) %>%
+  html_nodes("span.a-price-whole") %>%
+  html_text
+page3_catbrush_prices24 <-page3_catbrush_prices[1:24]
+page3_catbrush_prices24
+
+
+page3_catbrush_Ratings <- scrape(session) %>%
+  html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
+  html_text
+page3_catbrush_Ratings24<-page3_catbrush_Ratings[1:24]
+page3_catbrush_Ratings24
+
+
+page3_catbrush_noReviews <- scrape(session) %>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+page3_catbrush_noReviews24<-page3_catbrush_noReviews[1:24]
+page3_catbrush_noReviews24
+
+Pet_Supplies <-data.frame(category = Category,
+                               name = page3_catbrush24,
+                               price = page3_catbrush_prices,
+                               ratings = page3_catbrush_Ratings24,
+                               no_of_reviews = page3_catbrush_noReviews24)
+
+url4->"https://www.amazon.com/s?k=pet+supplies&i=pets&rh=n%3A2619533011%2Cn%3A2975241011%2Cn%3A2975268011%2Cn%3A2975270011&dc&page=4&crid=3SO76ZS0IXIVB&qid=1708562944&rnid=2619533011&sprefix=Pet+supplioes%2Caps%2C319&ref=sr_pg_4"
+
+session4 <- bow(url4,user_agent = "For Educational Purposes")
+
+amazon <- read_html(url)
+
+Category <- "PetSupplies"
+
+  page4_catbrush <- scrape(session) %>%
+  html_nodes("span.a-text-normal") %>%
+  html_text
+page4_catbrush24 <- page4_catbrush[1:24]
+page4_catbrush24
+
+
+page4_catbrush_prices <- scrape(session) %>%
+  html_nodes("span.a-price-whole") %>%
+  html_text
+page4_catbrush_prices24 <-page4_catbrush_prices[1:24]
+page4_catbrush_prices24
+
+
+page4_catbrush_Ratings <- scrape(session) %>%
+  html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
+  html_text
+page4_catbrush_Ratings24<-page4_catbrush_Ratings[1:24]
+page4_catbrush_Ratings24
+
+
+page4_catbrush_noReviews <- scrape(session) %>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+page4_catbrush_noReviews24<-page4_catbrush_noReviews[1:24]
+page4_catbrush_noReviews24
+
+Pet_Supplies <-data.frame(category = Category,
+                               name = page4_catbrush24,
+                               price = page4_catbrush_prices,
+                               ratings = page4_catbrush_Ratings24,
+                               no_of_reviews = page4_catbrush_noReviews24)
+
+url5-> "https://www.amazon.com/s?k=pet+supplies&i=pets&rh=n%3A2619533011%2Cn%3A2975241011%2Cn%3A2975268011%2Cn%3A2975270011&dc&page=5&crid=3SO76ZS0IXIVB&qid=1708562907&rnid=2619533011&sprefix=Pet+supplioes%2Caps%2C319&ref=sr_pg_5"
+
+session5 <- bow(url5,user_agent = "For Educational Purposes")
+
+amazon <- read_html(url)
+
+Category <- "PetSupplies"
+
+ page5_catbrush <- scrape(session) %>%
+  html_nodes("span.a-text-normal") %>%
+  html_text
+page5_catbrush24 <- page5_catbrush[1:24]
+page5_catbrush24
+
+
+page5_catbrush_prices <- scrape(session) %>%
+  html_nodes("span.a-price-whole") %>%
+  html_text
+page5_catbrush_prices24 <-page5_catbrush_prices[1:24]
+page5_catbrush_prices24
+
+
+page5_catbrush_Ratings <- scrape(session) %>%
+  html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
+  html_text
+page5_catbrush_Ratings24<-page5_catbrush_Ratings[1:24]
+page5_catbrush_Ratings24
+
+
+page5_catbrush_noReviews <- scrape(session) %>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+page5_catbrush_noReviews24<-page5_catbrush_noReviews[1:24]
+page5_catbrush_noReviews24
+
+Pet_Supplies <-data.frame(category = Category,
+                               name = page5_catbrush24,
+                               price = page5_catbrush_prices,
+                               ratings = page5_catbrush_Ratings24,
+                               no_of_reviews = page5_catbrush_noReviews24)
+
+Pet_Supplies <- Pet_Supplies[1:100,]
+Pet_Supplies
 ```
+
+CATEGORY- PET SUPPLIES
+SECOND PRODUCT- Cat Apparel
+
+
+```{r}
+Pet_Supplies2 <- data.frame()
+
+url1<- "https://www.amazon.com/s?k=pet+supplies&i=pets&rh=n%3A2619533011%2Cn%3A2975241011%2Cn%3A2975242011&dc&crid=3SO76ZS0IXIVB&qid=1708564181&rnid=2619533011&sprefix=Pet+supplioes%2Caps%2C319&ref=sr_pg_1"
+
+session1<- bow(url1,user_agent = "For Educational Purposes")
+
+amazon <- read_html(second_url)
+
+Category <- "Pet_Supplies2"
+
+
+CatApparel <- scrape(session1) %>%
+  html_nodes("span.a-text-normal") %>%
+  html_text
+CatApparel24- CatApparel[1:24]
+CatApparel24
+
+CatApparel_prices <- scrape(session2)%>%
+  html_nodes("span.a-price-whole") %>%
+  html_text
+CatApparel_prices24-CatApparel_prices[1:24]
+CatApparel_prices24
+
+
+CatApparel_Ratings <- scrape(session2)%>%
+  html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
+  html_text
+CatApparel_Ratings24-CatApparel_Ratings[1:24]
+CatApparel_Ratings24
+
+
+
+CatApparel_noReviews <- scrape(session2)%>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+CatApparel_noReviews24-CatApparel_noReviews [1:24]
+CatApparel_noReviews24
+
+Pet_Supplies2  <- rbind(GamingAccessories2,data.frame(category = Category,
+                               name = CatApparel24,
+                               price = CatApparel_prices24,
+                               ratings = CatApparel_Ratings24,
+                               no_of_reviews = CatApparel_noReviews24))
+
+
+url2 <- "https://www.amazon.com/s?k=pet+supplies&i=pets&rh=n%3A2619533011%2Cn%3A2975241011%2Cn%3A2975242011&dc&page=2&crid=3SO76ZS0IXIVB&qid=1708563410&rnid=2619533011&sprefix=Pet+supplioes%2Caps%2C319&ref=sr_pg_2"
+
+session2 <- bow(url2,user_agent = "For Educational Purposes")
+
+amazon <- read_html(second_url)
+
+Category <- "Pet_Supplies2"
+
+
+page2_CatApparel <- scrape(session2) %>%
+  html_nodes("span.a-text-normal") %>%
+  html_text
+page2_CatApparel24- page2_CatApparel[1:24]
+page2_CatApparel24
+
+page2_CatApparel_prices <- scrape(session2)%>%
+  html_nodes("span.a-price-whole") %>%
+  html_text
+page2_CatApparel_prices24-page2_CatApparel_prices[1:24]
+page2_CatApparel_prices24
+
+
+page2_CatApparel_Ratings <- scrape(session2)%>%
+  html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
+  html_text
+page2_CatApparel_Ratings24-page2_CatApparel_Ratings[1:24]
+page2_CatApparel_Ratings24
+
+
+
+page2_CatApparel_noReviews <- scrape(session2)%>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+page2_CatApparel_noReviews24-page2_CatApparel_noReviews [1:24]
+page2_CatApparel_noReviews24
+
+Pet_Supplies2  <- rbind(GamingAccessories2,data.frame(category = Category,
+                               name = page2_CatApparel24,
+                               price = page2_CatApparel_prices24,
+                               ratings = page2_CatApparel_Ratings24,
+                               no_of_reviews = page2_CatApparel_noReviews24))
+
+url3<- "https://www.amazon.com/s?k=pet+supplies&i=pets&rh=n%3A2619533011%2Cn%3A2975241011%2Cn%3A2975242011&dc&page=3&crid=3SO76ZS0IXIVB&qid=1708565083&rnid=2619533011&sprefix=Pet+supplioes%2Caps%2C319&ref=sr_pg_3"
+
+session3 <- bow(second_url3,user_agent = "For Educational Purposes")
+
+amazon <- read_html(second_url3)
+
+Category <- "Pet_Supplies"
+
+
+page3_CatApparel<- scrape(session3) %>%
+  html_nodes("span.a-text-normal") %>%
+  html_text
+page3_CatApparel24 <- page3_CatApparel[1:24]
+page3_CatApparel24
+
+
+page3_CatApparel_prices <- scrape(session3)%>%
+  html_nodes("span.a-price-whole") %>%
+  html_text
+page3_CatApparel_prices24-page3_CatApparel_prices[1:24]
+page3_CatApparel_prices24
+
+
+page3_CatApparel_Ratings <- scrape(session3)%>%
+  html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
+  html_text
+page3_CatApparel_Ratings24-page3_CatApparel_Ratings[1:24]
+page3_CatApparel_Ratings24
+
+
+
+page3_CatApparel_noReviews <- scrape(session3)%>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+page3_CatApparel_noReviews24-page3_CatApparel_noReviews[1:24]
+page3_CatApparel_noReviews24
+
+Pet_Supplies2 <- rbind(GamingAccessories2,data.frame(category = Category,
+                               name = page3_CatApparel24,
+                               price = page3_CatApparel_prices24,
+                               ratings = page3_CatApparel_Ratings24,
+                               no_of_reviews = page3_CatApparel_noReviews24))
+                                                                                                                                           
+url4 <-"https://www.amazon.com/s?k=pet+supplies&i=pets&rh=n%3A2619533011%2Cn%3A2975241011%2Cn%3A2975242011&dc&page=4&crid=3SO76ZS0IXIVB&qid=1708565240&rnid=2619533011&sprefix=Pet+supplioes%2Caps%2C319&ref=sr_pg_4"
+  
+session4 <- bow(url4,user_agent = "For Educational Purposes")
+session4
+
+amazon <- read_html(second_url4)
+
+Category <- "Pet_Supplies2"
+
+
+page4_CatApparel <- scrape(session4) %>%
+  html_nodes("span.a-text-normal") %>%
+  html_text
+page4_CatApparel24 <- page4_CatApparel[1:16]
+page4_CatApparel24
+
+
+page4_mouse_prices <- scrape(session4)%>%
+  html_nodes("span.a-price-whole") %>%
+  html_text
+page4_CatApparel_prices24 <-page4_mouse_prices[1:16]
+page4_CatApparel_prices24
+
+
+page4_CatApparel_Ratings <- scrape(session4)%>%
+  html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
+  html_text
+page4_CatApparel_Ratings24 <-page4_CatApparel_Rating[1:16]
+page4_CatApparel_Ratings24
+
+
+
+page4_CatApparel_noReviews <- scrape(session4)%>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+page4_CatApparel_noReviews24 <-page4_CatApparel_noReviews[1:16]
+page4_CatApparel_noReviews24
+
+Pet_Supplies2 <- rbind(GamingAccessories2,data.frame(category = Category,
+                               name = page4_CatApparel,
+                               price = page4_CatApparel_prices24,
+                               ratings = page4_CatApparel_Ratings24,
+                               no_of_reviews = page4_CatApparel_noReviews24))
+
+url5<-"https://www.amazon.com/s?k=pet+supplies&i=pets&rh=n%3A2619533011%2Cn%3A2975241011%2Cn%3A2975242011&dc&page=5&crid=3SO76ZS0IXIVB&qid=1708566127&rnid=2619533011&sprefix=Pet+supplioes%2Caps%2C319&ref=sr_pg_5"
+
+session5 <- bow(url5,user_agent = "For Educational Purposes")
+session5
+
+amazon <- read_html(url)
+
+Category <- "Pet_Supplies2"
+
+ page5_CatApparel <- scrape(session) %>%
+  html_nodes("span.a-text-normal") %>%
+  html_text
+page5_CatApparel24 <- page5_CatApparel[1:24]
+page5_CatApparel24
+
+
+page5_CatApparel_prices <- scrape(session) %>%
+  html_nodes("span.a-price-whole") %>%
+  html_text
+page5_CatApparel_prices24 <-page5_CatApparel_prices[1:24]
+page5_CatApparel_prices24
+
+
+page5_CatApparel_Ratings <- scrape(session) %>%
+  html_nodes("i.a-icon.a-icon-star-small.a-star-small-4.aok-align-bottom") %>%
+  html_text
+page5_CatApparel_Ratings24<-page5_CatApparel_Ratings[1:24]
+page5_CatApparel_Ratings24
+
+
+page5_CatApparel_noReviews <- scrape(session) %>%
+  html_nodes("span.a-size-base.s-underline-text") %>%
+  html_text
+page5_CatApparel_noReviews24<-page5_CatApparel_noReviews[1:24]
+page5_CatApparel_noReviews24
+
+Pet_Supplies2 <-data.frame(category = Category,
+                               name = page5_CatApparel24,
+                               price = page5_CatApparel_prices24,
+                               ratings = page5_page5_CatApparel_Ratings24,
+                               no_of_reviews = page5_CatApparel_noReviews24)
+
+Pet_Supplies2 <- Pet_Supplies2[1:100,]
+Pet_Supplies2
+
+
+
+```
+SELECT 10 PRODUCTS
 
 ```{r}
 
-headphones_noReviews2 <- scrape(session) %>%
-  html_nodes("span.a-size-base.s-underline-text") %>%
-  html_text
-headphones_noReviews2
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product1 <- data.frame()
+
+Category <- "Pet_Supplies"
+
+linkRev1 <- "https://www.amazon.co.uk/AmazonBasics-Ergonomic-Wireless-Mouse-adjustable/product-reviews/B0787D6SGQ/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews"
+
+
+sessionProd1 <- bow(linkRev1, user_agent = "For Educational Purpose")
+
+scrapeNodes <- function(selector) {
+  nodes <- scrape(sessionProd1) %>%
+    html_nodes(selector) %>%
+    html_text(trim = TRUE)
+  
+  if (length(nodes) == 0) {
+    warning("No data found for selector: ", selector)
+    return(NA)
+  } else {
+    return(nodes)
+  }
+}
+
+  ProductName <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  Reviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  Review <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  Date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  ProductRating <- scrapeNodes("span.a-icon-alt")[1:10]
+
+  product1 <- data.frame(
+   category = rep(Category, length(Reviewer)),
+    name = ProductName,
+    reviewer = Reviewer,
+    review = Review,
+    date = Date,
+    ratings = ProductRating
+  )
+  
+  product1
+  
+linkRev2 = "https://www.amazon.co.uk/AmazonBasics-Ergonomic-Wireless-Mouse-adjustable/product-reviews/B0787D6SGQ/ref=cm_cr_getr_d_paging_btm_prev_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+  
+  sessionProd2 <- bow(linkRev2,
+               user_agent = "For Educational Purpose")
+
+
+      Reviewer2 <- scrapeNodes("span.a-profile-name")
+      Reviewer2 <- Reviewer2[1:10]
+      
+      Review2 <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+      Review2 <- Review2[1:10]
+      
+      Date2 <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+      Date2 <- Date2[1:10]
+
+      ProductRating2 <- scrapeNodes("span.a-icon-alt")
+      ProductRating2 <- ProductRating2[1:10]
+
+      
+      product1 <- rbind(product1, data.frame(category = Category ,name = ProductName,
+                          reviewer = Reviewer2,
+                          review = Review2,
+                          date = Date2,
+                         ratings = ProductRating2))
+      
+      product1
+      
+      linkRev3 = "https://www.amazon.co.uk/AmazonBasics-Ergonomic-Wireless-Mouse-adjustable/product-reviews/B0787D6SGQ/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+  
+  sessionProd3 <- bow(linkRev3,
+               user_agent = "For Educational Purpose")
+
+
+      
+      Reviewer3 <- scrapeNodes("span.a-profile-name")
+      Reviewer3 <- Reviewer3[1:10]
+
+      
+      Review3 <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+      Review3 <- Review3[1:10]
+
+      
+      Date3 <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+      Date3 <- Date3[1:10]
+
+      
+      ProductRating3 <- scrapeNodes("span.a-icon-alt")
+      ProductRating3 <-  ProductRating3[1:10]
+
+      
+      product1 <- rbind(product1, data.frame(category = Category ,name = ProductName,
+                          reviewer = Reviewer3,
+                          review = Review3,
+                          date = Date3,
+                         ratings =  ProductRating3))
+      
+      product1 <- product1[1:25,]
+
+
+      product1
+      
 ```
+```{r}
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product2 <- data.frame()
+
+Category <- "GamingMouse"
+
+linkRev1 <- "https://www.amazon.co.uk/Logitech-G502-Wireless-Programmable-Next-Generation/product-reviews/B07QKC4WWD/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber"
+
+
+sessionProd1 <- bow(linkRev1, user_agent = "For Educational Purpose")
+
+scrapeNodes <- function(selector) {
+  nodes <- scrape(sessionProd1) %>%
+    html_nodes(selector) %>%
+    html_text(trim = TRUE)
+  
+  if (length(nodes) == 0) {
+    warning("No data found for selector: ", selector)
+    return(NA)
+  } else {
+    return(nodes)
+  }
+}
+
+  ProductName <- scrapeNodes("h1.a-size-large.a-text-ellipsis")
+  Reviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  Review <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  Date <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  ProductRating <- scrapeNodes("span.a-icon-alt")[1:10]
+
+  product2 <- data.frame(
+   category = rep(Category, length(Reviewer)),
+    name = ProductName,
+    reviewer = Reviewer,
+    review = Review,
+    date = Date,
+    ratings = ProductRating
+  )
+  
+  product2
+  
+linkRev2 = "https://www.amazon.co.uk/Logitech-G502-Wireless-Programmable-Next-Generation/product-reviews/B07QKC4WWD/ref=cm_cr_arp_d_paging_btm_next_2?ie=UTF8&reviewerType=all_reviews&pageNumber=2"
+  
+  sessionProd2 <- bow(linkRev2,
+               user_agent = "For Educational Purpose")
+
+
+      Reviewer2 <- scrapeNodes("span.a-profile-name")
+      Reviewer2 <- Reviewer2[1:10]
+
+      
+      Review2 <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+      Review2 <- Review2[1:10]
+
+      
+      Date2 <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+      Date2 <- Date2[1:10]
+
+      
+      ProductRating2 <- scrapeNodes("span.a-icon-alt")
+      ProductRating2 <- ProductRating2[1:10]
+
+      
+      product2 <- rbind(product2, data.frame(category = Category ,name = ProductName,
+                          reviewer = Reviewer2,
+                          review = Review2,
+                          date = Date2,
+                         ratings = ProductRating2))
+      
+      product2
+      
+      linkRev3 = "https://www.amazon.co.uk/Logitech-G502-Wireless-Programmable-Next-Generation/product-reviews/B07QKC4WWD/ref=cm_cr_getr_d_paging_btm_next_3?ie=UTF8&reviewerType=all_reviews&pageNumber=3"
+  
+  sessionProd3 <- bow(linkRev3,
+               user_agent = "For Educational Purpose")
+
+
+      
+      Reviewer3 <- scrapeNodes("span.a-profile-name")
+      Reviewer3 <- Reviewer3[1:10]
+
+      
+      Review3 <- scrapeNodes("span.a-size-base.review-text.review-text-content")
+      Review3 <- Review3[1:10]
+
+      
+      Date3 <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")
+      Date3 <- Date3[1:10]
+
+      
+      ProductRating3 <- scrapeNodes("span.a-icon-alt")
+       ProductRating3 <-  ProductRating3[1:10]
+
+      
+      product2 <- rbind(product2, data.frame(category = Category ,name = ProductName,
+                          reviewer = Reviewer3,
+                          review = Review3,
+                          date = Date3,
+                         ratings =  ProductRating3))
+      
+      product2 <- product2[1:25,]
+
+
+      product2
+      
+
+
+```
+
+
 
 
