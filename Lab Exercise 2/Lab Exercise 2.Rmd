@@ -1,0 +1,2225 @@
+---
+title: "Lab Exercise 2"
+output: html_document
+date: "2024-03-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product1 <- data.frame()
+
+for (page in 1:5) {
+  link1 <- paste0("https://www.amazon.com.au/AUTOMET-Outfits-Matching-Clothes-Vacation/product-reviews/B0BNLTF3G6/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session1 <- bow(link1, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session1) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  productName <- "AUTOMET Womens 2 Piece Outfits Lounge Matching Sets Two Piece Linen Shorts Crop Tops 2023 Trendy Clothes Summer Vacation Set"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product1 <- rbind(product1, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product1)
+```
+
+```{r}
+
+product2 <- data.frame()
+
+for (page in 1:5) {
+  link2 <- paste0("https://www.amazon.com.au/AUROLA-Intensify-Workout-Seamless-Exercise/product-reviews/B09N8K6B43/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session2 <- bow(link2, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session2) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  productName <- "AUROLA"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product2 <- rbind(product2, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product2)
+```
+
+```{r}
+
+product3 <- data.frame()
+
+for (page in 1:5) {
+  link3 <- paste0("https://www.amazon.com.au/CRZ-YOGA-Workout-Running-Athletic/product-reviews/B09MF4QF64/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session3 <- bow(link3, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session3) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  productName <- "CRZ YOGA Women's Pima Cotton Workout Crop Top Short Sleeve Running T-Shirt Casual Athletic Tee "
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product3 <- rbind(product3, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product3)
+```
+
+```{r}
+
+product4 <- data.frame()
+
+for (page in 1:5) {
+  link4 <- paste0("https://www.amazon.com.au/ANRABESS-Sweatsuit-Oversized-Sweatshirt-1088yuehui-M/product-reviews/B0C3QQX2LK/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session4 <- bow(link4, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session4) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  productName <- "ANRABESS Women 2 Piece Outfits Sweatsuit Set 2023 Fall Oversized Half Zip Sweatshirt Wide Leg Sweatpant Lounge Set Tracksuit "
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product4 <- rbind(product4, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product4)
+```
+
+```{r}
+
+product5 <- data.frame()
+
+for (page in 1:5) {
+  link5 <- paste0("https://www.amazon.com.au/Vertvie-Elastic-Scrunch-Athletic-Leggings/product-reviews/B0C2V32CP3/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session5 <- bow(link5, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session5) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  productName <- "Vertvie Women's Gym Shorts V Cross Elastic Push Up Yoga Shorts Booty Scrunch High Waisted Athletic Leggings"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product5 <- rbind(product5, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product5)
+```
+
+```{r}
+
+product6 <- data.frame()
+
+for (page in 1:5) {
+  link6 <- paste0("https://www.amazon.com.au/CRZ-YOGA-Womens-Dolphin-Running/product-reviews/B09Y1VHX3R/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session6 <- bow(link6, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session6) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  productName <- "CRZ YOGA Women's High Waist Dolphin Running Shorts - 3'' Mesh Liner Quick Dry Athletic Gym Workout Shorts with Zipper Pocket"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product6 <- rbind(product6, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product6)
+```
+
+```{r}
+
+product7 <- data.frame()
+
+for (page in 1:5) {
+  link7 <- paste0("https://www.amazon.com.au/Gihuo-Athletic-Lightweight-Workout-Holes（Black-S）/product-reviews/B08C2W2VRL/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session7 <- bow(link7, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session7) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  productName <- "Gihuo Women's Athletic Full Zip Lightweight Workout Jacket with Thumb"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product7 <- rbind(product7, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product7)
+```
+
+```{r}
+
+product8 <- data.frame()
+
+for (page in 1:5) {
+  link8 <- paste0("https://www.amazon.com.au/Workout-Seamless-Leggings-Exercise/product-reviews/B095PR6WFY/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session8 <- bow(link8, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session8) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  productName <- "OQQ Workout Outfits for Women 2 Piece Seamless Ribbed High Waist Leggings with Sports Bra Exercise Set"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product8 <- rbind(product8, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product8)
+```
+
+```{r}
+
+product9 <- data.frame()
+
+for (page in 1:5) {
+  link9 <- paste0("https://www.amazon.com.au/GYM-PEOPLE-Waisted-Running-Athletic/product-reviews/B097DHVRM3/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session9 <- bow(link9, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session9) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  productName <- "THE GYM PEOPLE Womens High Waisted Running Shorts Quick Dry Athletic Workout Shorts with Mesh Liner Zipper Pockets"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product9 <- rbind(product9, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product9)
+```
+
+```{r}
+
+product10 <- data.frame()
+
+for (page in 1:5) {
+  link10 <- paste0("https://www.amazon.com.au/Mizuno-Victory-Inseam-Volleyball-Shorts/product-reviews/B078TKS8W9/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session10 <- bow(link10, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session10) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+  
+  productName <- "Mizuno Victory 3.5 Inseam Volleyball Short"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product10 <- rbind(product10, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product10)
+```
+
+```{r}
+
+product11 <- data.frame()
+
+for (page in 1:5) {
+  link11 <- paste0("https://www.amazon.com.au/AUROLA-Collection-Workout-Shorts-Women/product-reviews/B0BHS4RDSV/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session11 <- bow(link11, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session11) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "AUROLA"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product11 <- rbind(product11, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product11)
+
+```
+
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product12 <- data.frame()
+
+for (page in 1:5) {
+  link12 <- paste0("https://www.amazon.com.au/Champion-Womens-Short-Black-Medium/product-reviews/B008HAS8IG/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session12 <- bow(link12, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session12) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Champion Women's"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product12 <- rbind(product12, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+ Sys.sleep(3)
+}
+
+View(product12)
+
+
+```
+
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product13 <- data.frame()
+
+for (page in 1:5) {
+  link13 <- paste0("https://www.amazon.com.au/Gradual-Waisted-Bermuda-Pockets-Athletic/product-reviews/B0BZPRPK98/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session13 <- bow(link13, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session13) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "G Gradual Women's High Waisted 9" 
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product13 <- rbind(product13, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product13)
+
+```
+
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product14 <- data.frame()
+
+for (page in 1:5) {
+  link14 <- paste0("https://www.amazon.com.au/Hanes-Womens-Performance-Sleeve-Medium/product-reviews/B01M213CWS/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session14 <- bow(link14, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session14) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Hanes Women's Sport Cool Dri Performance Long Sleeve Tee"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product14 <- rbind(product14, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product14)
+
+```
+
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product15 <- data.frame()
+
+for (page in 1:5) {
+  link15 <- paste0("https://www.amazon.com.au/adidas-Womens-Squad-Shorts-Medium/product-reviews/B0878X2TSQ/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session15 <- bow(link15, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session15) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "adidas Women's Squadra 21 Shorts"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product15 <- rbind(product15, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product15)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product16 <- data.frame()
+
+for (page in 1:5) {
+  link16 <- paste0("https://www.amazon.com.au/BMJL-Running-Elastic-Waisted-Athletic/product-reviews/B099S6TXX7/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session16 <- bow(link16, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session16) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "BMJL Women's Running Shorts Elastic High Waisted Shorts Pocket Sporty Workout Shorts Quick Dry Athletic Shorts Pants"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product16 <- rbind(product16, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product16)
+
+```
+
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product17 <- data.frame()
+
+for (page in 1:5) {
+  link17 <- paste0("https://www.amazon.com.au/Aoxjox-Sleeve-Clarissa-Hollow-Workout/product-reviews/B0BS9VKL7H/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session17 <- bow(link17, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session17) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Aoxjox Short Sleeve Crop Tops for Women Clarissa Hollow Back Workout Crop T Shirt Top"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product17 <- rbind(product17, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product17)
+
+
+```
+
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product18 <- data.frame()
+
+for (page in 1:5) {
+  link18 <- paste0("https://www.amazon.com.au/BMJL-Athletic-Waisted-Running-Darkblue/product-reviews/B09QHYX4LF/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session18 <- bow(link18, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session18) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "BMJL Women's Athletic Shorts High Waisted Running Shorts Pocket Sporty Shorts Gym Elastic Workout Shorts"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product18 <- rbind(product18, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product18)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product19 <- data.frame()
+
+for (page in 1:5) {
+  link19 <- paste0("https://www.amazon.com.au/Good-Luck-Sock-Womens-Hockey/product-reviews/B07Z63WCYK/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session19 <- bow(link19, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session19) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Good Luck Sock Women's"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product19 <- rbind(product19, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product19)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product20 <- data.frame()
+
+for (page in 1:5) {
+  link20 <- paste0("https://www.amazon.com.au/OQQ-Outfits-Exercise-Shoulder-Leggings/product-reviews/B0B7X54LRH/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session20 <- bow(link20, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session20) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "OQQ Women's 4 Piece Outfits Ribbed Exercise Scoop Neck Sports Bra One Shoulder Tops High Waist Shorts Leggings Active Set"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product20 <- rbind(product20, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product20)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product21 <- data.frame()
+
+for (page in 1:5) {
+  link21 <- paste0("https://www.amazon.com.au/OQQ-Outfits-Exercise-Shoulder-Leggings/product-reviews/B0B7X54LRH/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session21 <- bow(link21, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session21) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "OQQ Women's 4 Piece Outfits Ribbed Exercise Scoop Neck Sports Bra One Shoulder Tops High Waist Shorts Leggings Active Set"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product21 <- rbind(product21, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product21)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product22 <- data.frame()
+
+for (page in 1:5) {
+  link22 <- paste0("https://www.amazon.com.au/Hanes-Womens-Sport-Performance-Sleeve/product-reviews/B01M211AAW/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session22 <- bow(link22, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session22) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Hanes Women's Sport Cool Dri Performance Long Sleeve Tee"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product22 <- rbind(product22, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product22)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product23 <- data.frame()
+
+for (page in 1:5) {
+  link23 <- paste0("https://www.amazon.com.au/BASSDASH-Protection-T-Shirt-Fishing-Performance/product-reviews/B09FS8G9MV/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session23 <- bow(link23, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session23) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "HBassdash Women’s UPF 50+ UV Sun Protection T-Shirt Long Sleeve Fishing Hiking Performance Shirts"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product23 <- rbind(product23, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product23)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product24 <- data.frame()
+
+for (page in 1:5) {
+  link24 <- paste0("https://www.amazon.com.au/Hanes-Womens-Sleeve-Performance-X-Large/product-reviews/B00KRYNQ96/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session24 <- bow(link24, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session24) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Hanes Sport Women's Short Sleeve Cool DRI Performance Tee"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product24 <- rbind(product24, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product24)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product25 <- data.frame()
+
+for (page in 1:5) {
+  link25 <- paste0("https://www.amazon.com.au/Hanes-Womens-Jersey-Short-XX-Large/product-reviews/B016YKKKZE/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session25 <- bow(link25, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session25) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Hanes Women's Jersey Short"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product25 <- rbind(product25, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product25)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product26 <- data.frame()
+
+for (page in 1:5) {
+  link26 <- paste0("https://www.amazon.com.au/icyzone-Ultimate-Short-Sleeve-Workout-Charcoal/product-reviews/B07GH9CCV4/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session26 <- bow(link26, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session26) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "icyzone Workout Running Tshirts for Women - Fitness Athletic Yoga Tops Exercise Gym Shirts"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product26 <- rbind(product26, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product26)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product27 <- data.frame()
+
+for (page in 1:5) {
+  link27 <- paste0("https://www.amazon.com.au/icyzone-Workout-Lounge-Shorts-Women/product-reviews/B07868BFPC/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session27<- bow(link27, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session27) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "icyzone Workout Lounge Shorts for Women - Athletic Running Jogging Cotton Sweat Shorts"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product27 <- rbind(product27, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product27)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product28 <- data.frame()
+
+for (page in 1:5) {
+  link28 <- paste0("https://www.amazon.com.au/Nike-Womens-Short-Sleeve-T-Shirt/product-reviews/B0CSDTVGCG/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session28<- bow(link28, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session28) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Nike Women's Dry Legend"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product28 <- rbind(product28, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product28)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product29 <- data.frame()
+
+for (page in 1:5) {
+  link29 <- paste0("https://www.amazon.com.au/Muzniuer-Backless-Thumbhole-Crossover-Blouses/product-reviews/B07XRQ45NT/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session29<- bow(link29, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session29) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Muzniuer Women's Long Sleeve Open Back Shirts Loose Backless Yoga Shirts Thumbhole Shirts"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product29 <- rbind(product29, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product29)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product30 <- data.frame()
+
+for (page in 1:5) {
+  link30 <- paste0("https://www.amazon.com.au/Pleated-Waisted-Pockets-Athletic-1-white-nylon/product-reviews/B09N3PBLPZ/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session30<- bow(link30, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session30) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "STELLE Women's Tennis Skirt Pleated Golf Skorts High Waisted with Pockets Inner Shorts Athletic for Workout Sports"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product30 <- rbind(product30, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product30)
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product31 <- data.frame()
+
+for (page in 1:5) {
+  link31 <- paste0("https://www.amazon.com.au/Columbia-Womens-Fire-Sherpa-Shark/product-reviews/B076TM27CB/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session31<- bow(link31, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session31) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Columbia Women's Fire Side"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product31 <- rbind(product31, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product31)
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product32 <- data.frame()
+
+for (page in 1:5) {
+  link32 <- paste0("https://www.amazon.com.au/Nike-Womens-Cropped-Women-Small-Medium/product-reviews/B07NPDXRTQ/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session32<- bow(link32, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session32) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Nike Women's Sportswear Icon Futura Essential Cropped T-Shirt"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product32 <- rbind(product32, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product32)
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product33 <- data.frame()
+
+for (page in 1:5) {
+  link33 <- paste0("https://www.amazon.com.au/QINSEN-Workout-Seamless-Sleeve-Leggings/product-reviews/B09FF2CCYL/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session33<- bow(link33, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session33) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "QINSEN Workout Sets for Women 2 Piece Seamless Long Sleeve Crop Tops Ribbed High Waist Leggings"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product33<- rbind(product33, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product33)
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product34 <- data.frame()
+
+for (page in 1:5) {
+  link34 <- paste0("https://www.amazon.com.au/Armour-Womens-V-Neck-Metallic-Silver/product-reviews/B00KTH3042/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session34<- bow(link34, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session34) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Under Armour Women Tech Short Sleeve V - Solid, Ladies T Shirt Made of 4-Way Stretch Fabric, Ultra-Light & Breathable Running Apparel for Women"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product34<- rbind(product34, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product34)
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product35 <- data.frame()
+
+for (page in 1:5) {
+  link35 <- paste0("https://www.amazon.com.au/Champion-Womens-Mesh-Short-Sideline/product-reviews/B073RVB5PZ/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session35<- bow(link35, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session35) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Champion Women's Mesh Short"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product35<- rbind(product35, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product35)
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product36 <- data.frame()
+
+for (page in 1:5) {
+  link36 <- paste0("https://www.amazon.com.au/AUTOMET-Sweatpants-Pockets-Lounge-Pants-Womens-Greyblue/product-reviews/B0CBRV1YXS/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session36<- bow(link36, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session36) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "AUTOMET Womens Sweatpants Comfy Drawstring Athletic Lounge Yoga Pants Workout Joggers Pants with Pockets"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product36<- rbind(product36, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product36)
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product37 <- data.frame()
+
+for (page in 1:5) {
+  link37 <- paste0("https://www.amazon.com.au/Neleus-Running-Workout-Athletic-Blackish/product-reviews/B08H27Q77Y/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session37<- bow(link37, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session37) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "NELEUS Women's Lightweight Running Shorts Workout Athletic Short for Yoga with Pocket"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product37<- rbind(product37, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product37)
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product38 <- data.frame()
+
+for (page in 1:5) {
+  link38 <- paste0("https://www.amazon.com.au/Veriliss-Seamless-Outfits-Sportswear-Leggings/product-reviews/B08S6TYW4H/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session38<- bow(link38, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session38) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Veriliss 3pcs Gym Clothes for Women Tracksuit Womens Full Set Outfits Workout Joggers Yoga Sportswear Leggings and Stretch Sports Bra Jumpsuits Clothes Sets"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product38<- rbind(product38, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+  Sys.sleep(3)
+}
+
+View(product38)
+```
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product39 <- data.frame()
+
+for (page in 1:5) {
+  link39 <- paste0("https://www.amazon.com.au/Leggings-Depot-SKO10-R983-L-Lightweight-Running-R983/product-reviews/B091BJ1SCY/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session39 <- bow(link39, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session39) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Leggings Depot Women's Casual Long Pajama Lounge Pants Drawstring Sleepwear Regular & Plus Size"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product39<- rbind(product39, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+ Sys.sleep(3)
+}
+
+View(product39)
+
+```
+
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product40 <- data.frame()
+
+for (page in 1:5) {
+  link40 <- paste0("https://www.amazon.com.au/OLCHEE-Womens-Piece-Tracksuit-Workout/product-reviews/B0994FHZZ5/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session40 <- bow(link40, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session40) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "OLCHEE Women's Sexy Workout One Piece Romper Outfit - Bodycon Spaghetti Strap Yoga Shorts Jumpsuit"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product40 <- rbind(product40, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+ Sys.sleep(3)
+}
+
+View(product40)
+```
+
+```{r}
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product41 <- data.frame()
+
+for (page in 1:5) {
+  link41 <- paste0("https://www.amazon.com.au/Champion-Brand-Code-CHGEF-D9328C/product-reviews/B07TXVT4BT/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session41 <- bow(link41, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session41) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "C9 Champion Women's Full Zip Cardio Jacket"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product41 <- rbind(product41, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+ Sys.sleep(3)
+}
+
+View(product41)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product42 <- data.frame()
+
+for (page in 1:5) {
+  link42 <- paste0("https://www.amazon.com.au/Pleated-Pockets-Athletic-Running-X-Small/product-reviews/B08K8S8QQB/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session42 <- bow(link42, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session42) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Pleated Tennis Skirt for Women with Pockets Shorts Athletic Golf Skirts Workout Sports Casual Skorts"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product42 <- rbind(product42, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+ Sys.sleep(3)
+}
+
+View(product42)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product43 <- data.frame()
+
+for (page in 1:5) {
+  link43 <- paste0("https://www.amazon.com.au/adidas-Womens-Soccer-Shorts-Medium/product-reviews/B010DKYAI4/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session43 <- bow(link43, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session43) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "adidas"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product43 <- rbind(product43, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+ Sys.sleep(3)
+}
+
+View(product43)
+
+```
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product44 <- data.frame()
+
+for (page in 1:5) {
+  link44 <- paste0("https://www.amazon.com.au/Westkun-Leggings-Skirted-Trousers-Pockets/product-reviews/B08MT8Y2Q1/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session44 <- bow(link44, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session44) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Westkun Womens Slit Cut Tennis Skirt with Leggings Skirted Capris Trousers with Pockets"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product44 <- rbind(product44, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+ Sys.sleep(3)
+}
+
+View(product44)
+
+```
+
+```{r}
+
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product45 <- data.frame()
+
+for (page in 1:5) {
+  link45 <- paste0("https://www.amazon.com.au/Champion-Brand-Code-CHGEF-B9562C/product-reviews/B07TZXBTRJ/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session45 <- bow(link45, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session45) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "C9 Champion Women's Woven Training Pants"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product45 <- rbind(product45, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+ Sys.sleep(3)
+}
+
+View(product45)
+
+```
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product46 <- data.frame()
+
+for (page in 1:5) {
+  link46 <- paste0("https://www.amazon.com.au/PGA-TOUR-Womens-Airflux-Sleeveless/product-reviews/B07669VKPN/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session46 <- bow(link46, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session46) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "PGA TOUR Women's Airflux Sleeveless Golf Polo Shirt"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product46 <- rbind(product46, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+ Sys.sleep(3)
+}
+
+View(product46)
+
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product47 <- data.frame()
+
+for (page in 1:5) {
+  link47 <- paste0("https://www.amazon.com.au/jeansian-Breathable-T-Shirt-Swt240_White-XXL/product-reviews/B07DRDKLHG/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session47 <- bow(link47, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session47) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "jeansian Women's 3 Packs Sport Quick Dry Short Sleeves Base Layer Tee T-Shirt SWT240"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product47 <- rbind(product47, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+ Sys.sleep(3)
+}
+
+View(product47)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product48 <- data.frame()
+
+for (page in 1:5) {
+  link48 <- paste0("https://www.amazon.com.au/Underwear-Stretch-Leggings-Undershorts-Medium-Large/product-reviews/B0B2QTG16S/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session48 <- bow(link48, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session48) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Boao Lace Shorts Underwear Yoga Shorts Stretch Safety Leggings Undershorts for Women Girls"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product48 <- rbind(product48, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+ Sys.sleep(3)
+}
+
+View(product48)
+
+```
+
+```{r}
+
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product49 <- data.frame()
+
+for (page in 1:5) {
+  link49 <- paste0("https://www.amazon.com.au/VOYJOY-Seamless-Workout-Leggings-Scrunch/product-reviews/B0BTP7LBHH/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session49 <- bow(link49, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session49) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "VOYJOY Tie Dye Biker Shorts for Women High Waist Seamless Shorts Workout Yoga Leggings Scrunch Butt Lift Gym Pants"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product49 <- rbind(product49, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+ Sys.sleep(3)
+}
+
+View(product49)
+
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(polite)
+library(httr)
+library(selectr)
+
+product50 <- data.frame()
+
+for (page in 1:5) {
+  link50 <- paste0("https://www.amazon.com.au/Fihapyli-Backless-Workout-Clothes-Sleeveless/product-reviews/B07PS3NL72/ref=cm_cr_dp_d_show_all_btm_next_", page, "?ie=UTF8&reviewerType=all_reviews&pageNumber=", page)
+  session50 <- bow(link50, user_agent = "Educational Purpose")
+
+  scrapeNodes <- function(selector) {
+    scrape(session50) %>%
+      html_nodes(selector) %>%
+      html_text(trim = TRUE)
+  }
+
+  productName <- "Fihapyli Women's Short Sleeve Top Choker Cutout Neck 1/2 Sleeve Loose Tunic Tops"
+  scrapedTitle <- scrapeNodes("span.a-size-base.review-title.a-color-base.review-title-content.a-text-bold")[1:10]
+  scrapedReviewer <- scrapeNodes("span.a-profile-name")[1:10]
+  scrapedReview <- scrapeNodes("span.a-size-base.review-text.review-text-content")[1:10]
+  scrapedDate <- scrapeNodes("span.a-size-base.a-color-secondary.review-date")[1:10]
+  scrapedRating <- scrapeNodes("span.a-icon-alt")[1:10]
+  scrapedType <- scrapeNodes("span.a-size-mini.a-color-state.a-text-bold")[1:10]
+
+  product50 <- rbind(product50, data.frame(
+    prod_name = productName,
+    title = scrapedTitle,
+    reviewer = scrapedReviewer,
+    review = scrapedReview,
+    date = scrapedDate,
+    ratings = scrapedRating,
+    type_of_purchase = scrapedType
+  ))
+
+ Sys.sleep(3)
+}
+
+View(product50)
+
+
+```
+
+```{r}
+
+product2500_Reviews <- rbind(product1,product2,product3,product4,product5,product6,product7,product8,product9,product10,product11,product12,product13,product14,product15,product16,product17,product18,product19,product20,product21,product22,product23,product24,product25,product26,product27,product28,product29,product30,product31,product32,product33,product34,product35,product36,product37,product38,product39,product40,product41,product42,product43,product44,product45,product46,product47,product48,product49,product50)
+
+product2500_Reviews
+
+write.csv(product2500_Reviews,"50ProductReviews.csv")
+
+
+
+```
+
+
+```{r}
+library(DBI)
+library(odbc)
+library(RMySQL)
+library(dplyr,dbplyr)
+connection <- dbConnect(RMySQL::MySQL(),
+                        dsn="MariaDB-connection",
+                        Server = "localhost",
+                        dbname = "mewmew", 
+                        user = "root", 
+                        password = "") 
+
+```
+
+```{r}
+
+#install.packages("readr")
+library(readr)
+
+allproducts <- read.csv("50ProductReviews.csv")
+tail(allproducts)
+
+```
+
+## Writing Table to Database
+
+```{r}
+
+dbWriteTable(connection, 'lab2', allproducts, append = TRUE)
+
+```
+
+### LISTING TABLES AND FIELDS
+
+```{r}
+dbListTables(connection)
+dbListFields(connection,"lab2")
+```
+
+### READING DATA FROM TABLE
+
+```{r}
+
+review_data <- dbGetQuery(connection, "SELECT * FROM mewmew.lab2")
+glimpse(review_data)
+
+```
