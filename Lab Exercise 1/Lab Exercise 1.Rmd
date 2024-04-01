@@ -1,7 +1,7 @@
 ---
 title: "Lab Exercise 1"
 output: html_document
-date: "2024-02-08"
+date: "2024-04-01"
 ---
 
 ```{r setup, include=FALSE}
@@ -1432,5 +1432,67 @@ linkRev2 = "https://www.amazon.co.uk/Turtleneck-Classic-Cable-Sweater-Apparel/pr
 
 ```
 
+## INSERT ALL REVIEWS DATA FRAME TO DATABASE
 
 
+## USED RMYSQL
+
+```{r}
+library(DBI)
+library(odbc)
+library(RMySQL)
+library(dplyr,dbplyr)
+connection <- dbConnect(RMySQL::MySQL(),
+                        dsn="MariaDB-connection",
+                        Server = "localhost",
+                        dbname = "mewmew", 
+                        user = "root", 
+                        password = "") 
+
+```
+
+```{r}
+
+#install.packages("readr")
+library(readr)
+
+allrevs <- read.csv("10Products.csv")
+tail(allrevs)
+
+categs <- read.csv("1st100prod.csv")
+tail(categs)
+
+categs <- read.csv("2nd100prod.csv")
+tail(categs)
+
+```
+
+## Writing Table to Database
+
+```{r}
+
+dbWriteTable(connection, 'lab1Reviews', allrevs, append = TRUE)
+dbWriteTable(connection, 'lab1Products', categs, append = TRUE)
+
+```
+
+### LISTING TABLES AND FIELDS
+
+```{r}
+dbListTables(connection)
+dbListFields(connection,"lab1Reviews")
+dbListFields(connection,"lab1Products")
+```
+
+### READING DATA FROM TABLE
+
+```{r}
+
+review_data <- dbGetQuery(connection, "SELECT * FROM mewmew.lab1Reviews")
+glimpse(review_data)
+
+
+review_data2 <- dbGetQuery(connection, "SELECT * FROM mewmew.lab1Products")
+glimpse(review_data)
+
+```
